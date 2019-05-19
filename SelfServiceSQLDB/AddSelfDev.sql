@@ -1,0 +1,3 @@
+﻿CREATE LOGIN [selfDev]
+    WITH PASSWORD = N'xtfB&zl%g{oeQdUtn{<~xxsHmsFT7_&#$!~<beewglGmir{t', SID = 0x92FF75A8F2C05E4B8AC0B8E2F87AECB8, DEFAULT_DATABASE = [SelfServiceSQLDB], DEFAULT_LANGUAGE = [us_english], CHECK_POLICY = OFF;
+

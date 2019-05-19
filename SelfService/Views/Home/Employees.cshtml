@@ -1,0 +1,74 @@
+﻿
+@{
+    ViewBag.Title = "Employee List";
+}
+
+
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Employess</h1>
+    <a href="@Url.Action("EmployeeDetails","Home")" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-user-plus fa-sm text-white-50"></i> Add New Employee</a>
+</div>
+<p class="mb-4">Below is a list of employees, click on '<a href="#" class="btn btn-info btn-circle"><i class="fas fa-info-circle"></i></a>' at the end of each row to view more employee information.</p>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Employee List</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="tblEmployees" class="table table-striped table-bordered dataTable" cellspacing="0" style="width:100%">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Title</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <td>Gender</td>
+                        <th>Email</th>
+                        <th>Cell</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        //$('#tblEmployees').DataTable();
+        var DataURL = "@Url.Action("GetEmployees", "Home", null)";
+        var DetailsUrl = "@Url.Action("EmployeeDetails", "Home",null)?data=";
+        getEmployeeList(DataURL, DetailsUrl);
+    });
+
+    function getEmployeeList(DataURL, DetailsUrl) {
+        $('#tblEmployees').DataTable({
+            "ajax": {
+                "url": DataURL,
+                "type": "GET",
+            },
+            "columns": [
+                { "data": "Title", "autoWidth": true },
+                { "data": "FirstName", "autoWidth": true },
+                { "data": "LastName", "autoWidth": true },
+                { "data": "Gender", "autoWidth": true },
+                { "data": "Email", "autoWidth": true },
+                { "data": "Cell", "autoWidth": true },
+                {
+                    "orderable": false,
+                    "autoWidth": true,
+                    "render": function (data, type, row) {
+                        return '<a class="btn btn-info btn-circle" href=' + DetailsUrl + row.EmpoloyeeID + '><i class="fas fa-info-circle"></i></a>'; // add link on column
+                    },
+                }
+            ],
+            "pageLength": 5
+
+        });
+
+    };
+
+</script>
+

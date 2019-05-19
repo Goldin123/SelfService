@@ -1,0 +1,14 @@
+C:\Workspace\IQ\SelfService\SelfService.Data\bin\Debug\SelfService.Data.dll.config
+C:\Workspace\IQ\SelfService\SelfService.Data\bin\Debug\SelfService.Data.dll
+C:\Workspace\IQ\SelfService\SelfService.Data\bin\Debug\SelfService.Data.pdb
+C:\Workspace\IQ\SelfService\SelfService.Data\bin\Debug\EntityFramework.dll
+C:\Workspace\IQ\SelfService\SelfService.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Workspace\IQ\SelfService\SelfService.Data\bin\Debug\EntityFramework.xml
+C:\Workspace\IQ\SelfService\SelfService.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Workspace\IQ\SelfService\SelfService.Data\obj\Debug\SelfService.Data.csproj.CoreCompileInputs.cache
+C:\Workspace\IQ\SelfService\SelfService.Data\obj\Debug\SelfService.Data.csproj.CopyComplete
+C:\Workspace\IQ\SelfService\SelfService.Data\obj\Debug\SelfService.Data.dll
+C:\Workspace\IQ\SelfService\SelfService.Data\obj\Debug\SelfService.Data.pdb
+C:\Workspace\IQ\SelfService\SelfService.Data\obj\Debug\SelfService.Data.csprojAssemblyReference.cache
+C:\Workspace\IQ\SelfService\SelfService.Data\bin\Debug\SelfService.Model.dll
+C:\Workspace\IQ\SelfService\SelfService.Data\bin\Debug\SelfService.Model.pdb

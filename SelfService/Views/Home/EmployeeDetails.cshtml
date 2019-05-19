@@ -1,0 +1,162 @@
+﻿@model SelfService.Model.ViewEmployee
+@{
+    ViewBag.Title = "Employee Details";
+}
+
+@{ 
+    var sss = Model.Title;
+    int ad = 0;
+    }
+
+@using (Ajax.BeginForm("AddEditEmployee", "Home", new AjaxOptions
+{
+    HttpMethod = "POST",
+    OnSuccess = "ajaxSuccess",
+    OnFailure = "ajaxFailure"
+
+}))
+{
+    @Html.AntiForgeryToken()
+    <!-- Page Heading -->
+    <h1 class="h3 mb-1 text-gray-800">Employee Details</h1>
+    <p class="mb-4">Below is employee details, please make sure all information is correct then click 'save'.</p>
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Personal Information</h6>
+                </div>
+                <div class="card-body">
+                    <div class="user">
+                        <div class="form-group row">
+                            <div class="col-sm-2">
+                                @Html.DropDownListFor(m => m.Title, SelfService.Business.BaseData.UIElements.DropDownData.Title() ?? null, new { @class = "form-control", id = "Title" })
+                            </div>
+                            
+                            <div class="col-sm-5 mb-3 mb-sm-0">
+                                @Html.EditorFor(m => m.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "First Name", type = "text" } })
+                            </div>
+                            <div class="col-sm-5">
+                                @Html.EditorFor(m => m.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Last Name", type = "text" } })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                @Html.EditorFor(m => m.Cell, new { htmlAttributes = new { @class = "form-control", placeholder = "Cell Number", type = "number" } })
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.EditorFor(m => m.Telephone, new { htmlAttributes = new { @class = "form-control", placeholder = "Telephone", type = "number" } })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                @Html.DropDownListFor(m => m.Gender, SelfService.Business.BaseData.UIElements.DropDownData.Gender() ?? null, new { @class = "form-control", id = "Gender" })
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.DropDownListFor(m => m.DepartmentID, SelfService.Business.BaseData.UIElements.DropDownData.Department() ?? null, new { @class = "form-control", id = "Department" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.EditorFor(m => m.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email Address", type = "email" } })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Address Details</h6>
+                </div>
+                <div class="card-body ">
+                    <div class="user">
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                @Html.EditorFor(m => m.PhysicalLine1, new { htmlAttributes = new { @class = "form-control", placeholder = "Physical Line 1", type = "text" } })
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.EditorFor(m => m.PhysicalLine2, new { htmlAttributes = new { @class = "form-control", placeholder = "Physical Line 2", type = "text" } })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                @Html.EditorFor(m => m.PhysicalLine3, new { htmlAttributes = new { @class = "form-control", placeholder = "Physical Line 3", type = "text" } })
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.EditorFor(m => m.PhysicalCode, new { htmlAttributes = new { @class = "form-control", placeholder = "Physical Code", type = "text" } })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                @Html.EditorFor(m => m.PostLine1, new { htmlAttributes = new { @class = "form-control", placeholder = "Postal Line 1", type = "text" } })
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.EditorFor(m => m.PostLine2, new { htmlAttributes = new { @class = "form-control", placeholder = "Postal Line 2", type = "text" } })
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 mb-3 mb-sm-0">
+                                @Html.EditorFor(m => m.PostLine3, new { htmlAttributes = new { @class = "form-control", placeholder = "Postal Line 3", type = "text" } })
+                            </div>
+                            <div class="col-sm-6">
+                                @Html.EditorFor(m => m.PostCode, new { htmlAttributes = new { @class = "form-control", placeholder = "Postal Code", type = "text" } })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @Html.HiddenFor(a => a.EmpoloyeeID)
+        <div class="modal-footer">
+            <div style="float:left">
+                <input type='submit' id="btnSaveEmployee" class='btn button-next btn-round btn-primary' value='Save' />
+            </div>
+        </div>
+        <div class="col-lg-12">
+            @Html.ValidationSummary(false, "", new { @class = "text-danger", id = "EmpValSummary" })
+        </div>
+    </div>
+}
+
+<script>
+    //$.validator.setDefaults({
+    //    ignore: ""
+    //});
+    function ajaxSuccess(data) {
+        new PNotify({
+            title: 'Employee Details',
+            text: data.msg,
+            type: 'success',
+            styling: 'bootstrap3'
+        });
+        clearForm();
+    }
+    function ajaxFailure() {
+        new PNotify({
+            title: 'Employee Details',
+            text: 'Error occurred while saving employee',
+            type: 'error',
+            styling: 'bootstrap3'
+        });
+    }
+    function clearForm() {
+        $('#Title').prop('selectedIndex', 0);
+        $('#Gender').prop('selectedIndex', 0);
+        $('#DepartmentID').prop('selectedIndex', 0);
+        $('#FirstName').val('');
+        $('#LastName').val('');
+        $('#Cell').val('');
+        $('#Telephone').val('');
+        $('#Email').val('');
+        $('#PhysicalLine1').val('');
+        $('#PhysicalLine2').val('');
+        $('#PhysicalLine3').val('');
+        $('#PhysicalCode').val('');
+        $('#PostLine1').val('');
+        $('#PostLine2').val('');
+        $('#PostLine3').val('');
+        $('#PostCode').val('');
+    }
+
+</script>
