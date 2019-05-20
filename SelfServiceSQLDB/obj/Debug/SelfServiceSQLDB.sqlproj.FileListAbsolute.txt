@@ -3,4 +3,7 @@ C:\Workspace\IQ\SelfService\SelfServiceSQLDB\bin\Debug\SelfServiceSQLDB.dll
 C:\Workspace\IQ\SelfService\SelfServiceSQLDB\bin\Debug\SelfServiceSQLDB.pdb
 C:\Workspace\IQ\SelfService\SelfServiceSQLDB\obj\Debug\SelfServiceSQLDB.dll
 C:\Workspace\IQ\SelfService\SelfServiceSQLDB\obj\Debug\SelfServiceSQLDB.pdb
-C:\Workspace\IQ\SelfService\SelfServiceSQLDB\obj\Debug\SelfServiceSQLDB.sqlprojAssemblyReference.cache
+C:\Workspace\IQ\SelfService\SelfServiceSQLDB\obj\Debug\Model.xml
+C:\Workspace\IQ\SelfService\SelfServiceSQLDB\obj\Debug\refactor.xml
+C:\Workspace\IQ\SelfService\SelfServiceSQLDB\obj\Debug\postdeploy.sql
+C:\Workspace\IQ\SelfService\SelfServiceSQLDB\obj\Debug\predeploy.sql

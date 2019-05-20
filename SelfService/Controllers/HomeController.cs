@@ -27,9 +27,13 @@ namespace SelfService.Controllers
         public ActionResult EmployeeDetails(string data)
         {
             var rst = new SelfService.Model.ViewEmployee();
-            var iEmployeeID = Convert.ToInt32(data);
-            if (iEmployeeID > 0)
-                rst = _employee.GetEmployeeDetails(iEmployeeID);
+
+            if (!string.IsNullOrEmpty(data))
+            {
+                var iEmployeeID = Convert.ToInt32(data);
+                if (iEmployeeID > 0)
+                    rst = _employee.GetEmployeeDetails(iEmployeeID);
+            }
 
             return View(rst);
         }

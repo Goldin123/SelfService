@@ -25,6 +25,68 @@ namespace SelfService.Tests.Controllers
             Assert.IsNotNull(result);
         }
 
-        
+        [TestMethod()]
+        public void EmployeesTest()
+        {
+            HomeController controller = new HomeController();
+
+            // Act
+            ViewResult result = controller.Employees() as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod()]
+        public void GetEmployeesTest()
+        {
+            HomeController controller = new HomeController();
+
+            // Act
+            var result = controller.GetEmployees();
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod()]
+        public void AddEditEmployeeTest()
+        {
+            HomeController controller = new HomeController();
+            var param = new SelfService.Model.ViewEmployee
+            {
+                Cell = "0790002406",
+                DepartmentID = 1,
+                Email = "test@gmail.com",
+                FirstName = "Goldin",
+                Gender = "Male",
+                LastName = "Baloyi",
+                PhysicalCode = "2091",
+                PhysicalLine1 = "ph1",
+                Title = "Mr",
+                Telephone = "0790002406",
+                PhysicalLine2 = "ph2",
+            };
+            // Act
+            var result = controller.AddEditEmployee(param);
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod()]
+        public void EmployeeDetailsTest()
+        {
+
+            HomeController controller = new HomeController();
+            var parm = "";
+            // Act
+            ViewResult result = controller.EmployeeDetails(parm) as ViewResult;
+
+            // Assert
+            Assert.IsNotNull(result);
+        }
+
+
     }
 }
